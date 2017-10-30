@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="consoleLogger" class="pl.notify.logger.ConsoleLogger"/>
-    <bean id="fileReader" class="pl.notify.reader.FileNotificationReader"/>
-    <bean id="sender" class="pl.notify.sender.EmailNotificationSender"/>
+    <bean id="inputReader" class="pl.notify.reader.InputNotificationReader"/>
+    <bean id="sender" class="pl.notify.sender.SmsNotificationSender"/>
     <bean id="facade" class="pl.notify.app.NotificationFacade">
-        <constructor-arg ref="fileReader"/>
+        <constructor-arg ref="inputReader"/>
         <constructor-arg ref="sender"/>
         <constructor-arg ref="consoleLogger"/>
     </bean>

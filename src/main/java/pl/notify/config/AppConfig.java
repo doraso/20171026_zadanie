@@ -6,7 +6,9 @@ import pl.notify.app.NotificationFacade;
 import pl.notify.logger.FileLogger;
 import pl.notify.logger.NotifyLogger;
 import pl.notify.reader.FileNotificationReader;
+import pl.notify.reader.InputNotificationReader;
 import pl.notify.sender.EmailNotificationSender;
+import pl.notify.sender.SmsNotificationSender;
 
 //@Configuration
 public class AppConfig {
@@ -17,22 +19,22 @@ public class AppConfig {
         return fileLogger;
     }
 
+
     @Bean
-    public FileNotificationReader reader() {
-        FileNotificationReader fileNotificationReader = new FileNotificationReader();
-        return fileNotificationReader;
+    public InputNotificationReader reader(){
+        InputNotificationReader inputNotificationReader = new InputNotificationReader();
+        return inputNotificationReader;
     }
 
     @Bean
-    public EmailNotificationSender sender() {
-        EmailNotificationSender emailNotificationSender = new EmailNotificationSender();
-        return new EmailNotificationSender();
+    public SmsNotificationSender sender() {
+        SmsNotificationSender smsNotificationSender = new SmsNotificationSender();
+        return new SmsNotificationSender();
     }
 
-    @Bean
-    public NotificationFacade facade(NotifyLogger logger, FileNotificationReader reader, EmailNotificationSender sender) {
-        NotificationFacade notificationFacade = new NotificationFacade(reader, sender, logger);
-        return notificationFacade;
-    }
-
+@Bean
+public NotificationFacade facade(NotifyLogger logger, InputNotificationReader reader, SmsNotificationSender sender) {
+    NotificationFacade notificationFacade = new NotificationFacade(reader, sender, logger);
+    return notificationFacade;
+}
 }

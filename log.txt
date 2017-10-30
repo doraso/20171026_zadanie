@@ -1,0 +1,1 @@
+LOG INFO 1509308755384 Notification{username='Franek', email='f@wp.pl', telephone='123456789', content='Cześć tu franek'}
